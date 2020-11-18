@@ -119,15 +119,26 @@ if (!Promise.prototype.finally) {
 
 ### What’s in an Interpretation?
 
+- Code wriiten in JS: is it an **interpreted script** or **compiled program**?
+- The real reason that matters to have a clear picture on whether JS is interpreted or compiled relates to the nature of how errors are handled in it.
+- Historically, Interpreted or Scripting languages were executed in generally a top-down and line-by-line fashion.
+
+![image](https://user-images.githubusercontent.com/42200276/99537054-2fb18980-29d1-11eb-8825-1c46b838ab9a.png)
+
+- Some languages go through a processing step (typically Parsing) before their execution. This parsing creates a Abstract Syntax Tree (AST) of the whole program.
+
+![image](https://user-images.githubusercontent.com/42200276/99537130-4821a400-29d1-11eb-8b80-44fe10a25042.png)
+
+- In JS, source code is parsed before it is executed.
+- So JS is a parsed language, but is it compiled? The Answer is very close to YES than NO.
+- The parsed JS is converted into binary form and that binary form is executed.
+- Hence, **JS is a compiled language**. So, due to this fact, we are informed about the errors in our code even before it gets executed.
+
+<br/>
+
+### Web Assembly (WASM)
+
 - 
-
-
-
-
-
-
-
-
 
 
 
