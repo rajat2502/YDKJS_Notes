@@ -138,28 +138,29 @@ if (!Promise.prototype.finally) {
 
 ### Web Assembly (WASM)
 
-- 
+- In 2013, ASM.js was introduced as one way of addressing the pressures on the runtime performance of JS.
+- The intent of ASM.js was to provide a path for non-JS programs (C, etc.) to be converted to a form that could run in the JS engine.
+- After several years, another set of engineers released **Web Assembly**.
+- WASM is a representation format more akin to Assembly that can be processed by a JS engine by skipping the parsing/compilation that the JS engine normally does.
+- The parsing/compilation of a WASM-targeted program happen ahead of time (AOT); what’s distributed is a binary-packed program ready for the JS engine to execute with very minimal processing.
 
+<br/>
 
+### Strictly Speaking
 
+- With the release of ES5(2009), JS added "strict mode" as an opt-in mechanism for encouraging better JS programs.
+- It should be thought of as a guide to the best way to do things so that the JS engine has the best chance of optimizing and efficiently running the code.
 
+<br/>
 
+Strict mode is switched on per file with a special pragma (nothing allowed before it except comments/whitespace):
 
+```
+// only whitespace and comments are allowed
+// before the use-strict pragma
+"use strict";
+// the rest of the file runs in strict mode
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Strict mode can alternatively be turned on per-function scope
+- Interestingly, if a file has strict mode turned on, the function-level strict mode pragmas are disallowed. So you have to pick one or the other.
