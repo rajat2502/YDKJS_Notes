@@ -74,7 +74,78 @@
 
 ### Filling the Gaps
 
+- It the forwards-compatability issue is not because of a new-syntax but because of an API method that was recently added, the solution is to provide a defination of the recently added API that acts as if the older environment had already had it natively defined.
+- This pattern is called a **polyfill**.
+- Example:
+
+```
+// getSomeRecords() returns us a promise for some
+// data it will fetch
+var pr = getSomeRecords();
+// show the UI spinner while we get the data
+startSpinner();
+pr.then(renderRecords).catch(showError).finally(hideSpinner);
+// render if successful
+// show an error if not
+// always hide the spinner
+```
+This code uses an ES2019 feature and so it would not work in a pre-ES2019 enviornment, as, the **finally(..)** method would not exist, and an error would occur.
+
+To make it work, we can define the finally(..) method, as:
+
+```
+if (!Promise.prototype.finally) {
+  Promise.prototype.finally = function f(fn) {
+    return this.then(
+      function t(v) {
+        return Promise.resolve(fn()).then(function t() {
+          return v;
+        });
+      },
+      function c(e) {
+        return Promise.resolve(fn()).then(function t() {
+          throw e;
+        });
+      }
+    );
+  };
+}
+```
+<br/>
+
+**Warning**: *This is only a simple illustration of a basic (not entirely spec-compliant) polyfill for finally(..) . Don’t use this polyfill in your code; always use a robust, official polyfill wherever possible, such as the collection of polyfills/shims in ES-Shim.*
+
+<br/>
+
+### What’s in an Interpretation?
+
 - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
