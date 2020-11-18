@@ -5,9 +5,6 @@
 - **TC39** - the technical steering committee that manages JS, comprises of around 50-100 people from different companies like Mozilla, Google, Apple and Samsung.
 - **ECMA** - the standards organization.
 - All tc39 proposals can be found here: https://github.com/tc39/proposals
-
-<br/>
-
 - **v8 engine** - Chrome's JS Engine
 - **SpiderMonkey engine** - Mozilla’s JS engine
 
@@ -54,20 +51,30 @@
 
 <br/>
 
-### Backwards & Forwards
+## Backwards & Forwards
 
 - JavaScript practice the **Preservation of backwards compatibility**.
 - **Backwards Compatibility**: It means that once something is accepted as *valid JS*, there will not be any future change to the language that causes that code to become *Invalid JS*.
-- **TC39** members often proclaim that: **“we don’t break the web!”**.
+- **TC39** members often proclaims that: **“we don’t break the web!”**.
+- **forwards compatibility**: Being forwards-compatible means that including a new addition to the language in a program would not cause that program to break if it were run in an older JS engine.
+- **JS is not forwards-compatible**.
+- **HTML and CSS** are forwards-compatible, for instance, if you take out a code from 2020 and try to run it in an older browser, it will just skip the unrecognized HTML/CSS but it will not break the page (though the page may not look the same). They are not backwards-compatible.
 
+<br/>
 
+### Jumping the Gaps
 
+- Since JS is not forward-compatible, there will always be some code that is *valid JS*, but is not working in an older browser or enviornment.
+- Due to this, JS developers need to take special care to address this gap. For new and incompatible syntax, the solution is **transpiling**.
+- **Transpiling**: to convert newer JS syntax version to an equivalent older syntax that the old browsers and enviornments supports.
+- The most common transpiler is **[Babel](https://babeljs.io/)**.
+- It’s strongly recommended that developers use the latest version of JS so that their code is clean and communicates its ideas most effectively.
 
+<br/>
 
+### Filling the Gaps
 
-
-
-
+- 
 
 
 
