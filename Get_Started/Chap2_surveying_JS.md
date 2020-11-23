@@ -262,8 +262,50 @@ x < y;      // true, watch out!
 
 ### How We Organize in JS
 
+- Two of the most used patterns are: **classes** and **modules**.
 
+#### Classes
 
+- A class in a program is a definition of a *type* of custom data structure that includes both data and behaviors that operate on that data.
+
+```
+class Page {
+  constructor(text) {
+    this.text = text;
+  }
+  print() {
+    console.log(this.text);
+  }
+}
+
+class Notebook {
+  constructor() {
+    this.pages = [];
+  }
+  addPage(text) {
+    var page = new Page(text);
+    this.pages.push(page);
+  }
+  print() {
+    for (let page of this.pages) {
+      page.print();
+    }
+  }
+}
+
+var mathNotes = new Notebook();
+mathNotes.addPage("Arithmetic: + - * / ...");
+mathNotes.addPage("Trigonometry: sin cos tan ...");
+mathNotes.print();
+
+// Arithmetic: + - * / ...
+// Trigonometry: sin cos tan ...
+```
+
+- In `Page` class, the data `text` is stored in property `this.text` and the behavior is `print()`.
+- In `Notebook` class, the data `pages` is an array of `Page` instances and the behaviours are `print()` and `addPage(..)`.
+
+#### Class Inheritance
 
 
 
