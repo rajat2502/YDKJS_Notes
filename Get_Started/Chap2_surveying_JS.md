@@ -58,6 +58,184 @@ console.log(3.141592);
 
 #### Arrays And Objects
 
+- Besides primitives, the other value type in JS is an object value.
+- Arrays are a special type of object that’s comprised of an ordered and numerically indexed list of data. For eg:
+
+```
+names = [ "One", "Two", "Three", "Four" ];
+names.length;
+// 4
+names[0];
+// One
+names[1];
+// Two
+```
+
+- JS arrays can hold any datatype, either primitive or object. Even functions are values that can be held in arrays or objects.
+- Objects are more general: an unordered, keyed collection of any various values. For eg:
+
+```
+name = {
+  first: "Kyle",
+  last: "Simpson",
+  age: 39,
+  specialties: ["JS", "Table Tennis"],
+};
+console.log(`My name is ${name.first}.`);
+```
+
+- Here, `name` is an object with keys like `first`, `last`, `age` and `specialties`.
+- We can also use the the following syntax to access a value of object:
+
+```
+name["first"]
+```
+
+#### Value Type Determination
+
+- The `typeof` operator tells the built-in type of the value (i.e, primitive or object).
+
+```
+typeof 42; // number
+typeof "abc"; // string
+typeof true; // boolean
+typeof undefined; // undefined
+typeof null; // object
+typeof { a: 1 }; // object
+typeof [1, 2, 3]; // object
+typeof function hello() {}; // function
+```
+
+- Note that, `typeof` returns the type of `null`, `array` as object and `function` as `function`.
+
+### Declaring and Using Variables
+
+- Variables are like containers for values. There are many types of variable declaration in JS, and each one of them have their own different meanings. For eg:
+
+```
+var name = "Kyle";
+var age;
+```
+
+- The `var` keyword declares a variable to be used in the program, and optionally allows initial value assignment.
+- Similarly, the `let` keyword can be used to declare variables as:
+
+```
+let name = "Kyle";
+let age;
+```
+
+- `let` allows a more limited access to the variable than var. This is called **block scoping** as opposed to regular or function scoping.
+- Another type of declaration is using the `const` keyword. A variable declared using this keyword is similar to `let`, with addition that it must be given a value at the moment it’s declared, and cannot be re-assigned a different value later.
+
+```
+const myBirthday = true;
+let age = 39;
+if (myBirthday) {
+  age = age + 1;
+  // OK!
+  myBirthday = false; // Error!
+}
+```
+
+**Tip: If you stick to using const only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const .**
+
+### Functions
+
+- In JS, the term function take the broader meaning of a **Procedure**. A procedure is a collection of statements that can be invoked one or more times, may be provided some inputs, and may give back one or more outputs. A function declaration in JS looks like:
+
+```
+function greetHello(name) {
+  const msg = `Hello ${name}`;
+  return msg;
+}
+```
+
+- This function is a *statement* and not an expression. The association between the identifier `awesomeFunction` and the function value happens during the compile phase of the code, before that code is executed.
+- A function expression can be defined as:
+
+```
+// let awesomeFunction = ..
+// const awesomeFunction = ..
+var awesomeFunction = function (coolThings) {
+  // ..
+  return amazingStuff;
+};
+```
+
+- This function is an `expression` that is assigned to the variable `awesomeFunction`. Contrary to a function statement, a function expression is not associated with its identifier until that statement during runtime. 
+- In JS, functions are a special type of object. They are treated as Values.
+- A function may or may not have a parameter.
+- Functions can also return values. You can only return a single value, but if you want to return multiple values, then you can wrap up them into a single object/array.
+- Since functions are values, they can be assigned as properties on objects:
+
+```
+var whatToSay = {
+  greeting() {
+    console.log("Hello!");
+  },
+  question() {
+    console.log("What's your name?");
+  },
+  answer() {
+    console.log("My name is Kyle.");
+  },
+};
+whatToSay.greeting();
+// Hello!
+```
+
+#### Comparisions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
