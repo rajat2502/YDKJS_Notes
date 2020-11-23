@@ -187,6 +187,7 @@ whatToSay.greeting();
 
 #### Comparisions
 
+- `==` is generally referred to as the *loose-equality* operator.
 - `===` equality comparison is often described as, “checking both the value and the type”. For eg:
 
 ```
@@ -230,7 +231,36 @@ x === [ 1, 2, 3 ];  // false
 
 - JS doesn’t provide structural equality comparison because it’s almost intractable to handle all the corner cases!
 
+#### Coercive Comparisons
 
+- Coercion means a value of one type being converted to its respective representation in another type.
+- The `==` operator performs an equality comparison similarly to how the `===` performs it. In fact, both operators consider the type of the values being compared. And if the comparison is between the same value type, both `==` and `===` do exactly the same thing, no difference whatsoever. If the value types being compared are different, the `==` differs from `===` in that it allows coercion before the comparison.
+- Instead of **“loose equality,”** the == operator should be described as **“coercive equality”**. Consider the following examples:
+
+```
+42 == "42";
+1 == true;
+```
+
+- In both cases, the value types are different so coercion is appplied and once they are of the same type then only the values are compared.
+- The relational comparison operators (>, <, >=, <=) also work like `==` operator. For eg:
+
+```
+var arr = ["1", "10", "100", "1000"];
+for (let i = 0; i < arr.length && arr[i] < 500; i++) {
+  // will run 3 times
+}
+```
+
+- These relational operators typically use numeric comparisons, except in the case where both values being compared are already strings; in this case, they use alphabetical (dictionary-like) comparison of the strings:
+
+```
+var x = "10";
+var y = "9";
+x < y;      // true, watch out!
+```
+
+### How We Organize in JS
 
 
 
