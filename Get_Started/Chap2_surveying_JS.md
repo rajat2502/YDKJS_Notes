@@ -187,11 +187,48 @@ whatToSay.greeting();
 
 #### Comparisions
 
+- `===` equality comparison is often described as, “checking both the value and the type”. For eg:
 
+```
+3 === 3.0 // true
+null === null // true
+3 === "3" // false
+```
 
+- `===` disallows any sort of type conversion (aka, **“coercion”**) in its comparison, where other JS comparisons do allow coercion.
+- The `===` operator is designed to lie in two cases of special values: NaN and -0. Consider:
 
+```
+NaN === NaN; // false
+0 === -0; // true
+```
 
+- In first case, it says that, an occurence of `NaN` is not equal to any other occurence of `NaN`. In case of 0, the === operator lies and says it’s equal to the regular 0 value.
+- So, for such comparisions involving NaN use the `Number.isNaN(..)` utility, and For -0 comparison, use the `Object.is(..)` utility.
+- The `Object.is(..)` utility can also be used for NaN comparisions. It is a really-really-strict comparison!
+- Object values comparision is even more complicated:
 
+```
+[ 1, 2, 3 ] === [ 1, 2, 3 ];  // false
+{ a: 42 } === { a: 42 }       // false
+(x => x * 2) === (x => x * 2) // false
+```
+
+- The `===` operator uses identity equality for object values.
+- In JS, all object values are held by reference, are assigned and passed by reference-copy, and are compared by reference (identity) equality.
+
+```
+var x = [ 1, 2, 3 ];
+// assignment is by reference-copy, so
+// y references the *same* array as x,
+// not another copy of it.
+var y = x;
+y === x;            // true
+y === [ 1, 2, 3 ];  // false
+x === [ 1, 2, 3 ];  // false
+```
+
+- JS doesn’t provide structural equality comparison because it’s almost intractable to handle all the corner cases!
 
 
 
