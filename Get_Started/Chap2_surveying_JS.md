@@ -307,57 +307,84 @@ mathNotes.print();
 
 #### Class Inheritance
 
+```
+class Publication {
+  constructor(title, author, pubDate) {
+    this.title = title;
+    this.author = author;
+    this.pubDate = pubDate;
+  }
+  print() {
+    console.log(`
+Title: ${this.title}
+By: ${this.author}
+${this.pubDate}
+`);
+  }
+}
+```
 
+- This Publication class defines a set of common behavior that any publication might need.
 
+```
+class Book extends Publication {
+  constructor(bookDetails) {
+    super(bookDetails.title, bookDetails.author, bookDetails.publishedOn);
+    this.publisher = bookDetails.publisher;
+    this.ISBN = bookDetails.ISBN;
+  }
+  print() {
+    super.print();
+    console.log(`
+Publisher: ${this.publisher}
+ISBN: ${this.ISBN}
+`);
+  }
+}
+```
 
+- The `Book` class use the `extends` clause to extend the general definition of Publication to include additional behavior. This behavior is called `Inheritance`.
 
+#### Modules
 
+- The `Modules` pattern have the same goal i.e. to group data and behavior, but it has certain differences from `classes`. An example of `classic-modules` is:
 
+```
+function Publication(title, author, pubDate) {
+  var publicAPI = {
+    print() {
+      console.log(`
+Title: ${title}
+By: ${author}
+${pubDate}
+`);
+    },
+  };
+  return publicAPI;
+}
 
+function Book(bookDetails) {
+  var pub = Publication(
+    bookDetails.title,
+    bookDetails.author,
+    bookDetails.publishedOn
+  );
+  var publicAPI = {
+    print() {
+      pub.print();
+      console.log(`
+Publisher: ${bookDetails.publisher}
+ISBN: ${bookDetails.ISBN}
+`);
+    },
+  };
+  return publicAPI;
+}
+```
 
+- The class form stores methods and data on an object instance, which must be accessed with the `this.` prefix. With modules, the methods and data are accessed as identifier variables in scope, without any this. prefix.
 
+#### ES Modules
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- ESMs are always file-based; one file, one module.
+- They have to be exported from one file to be used into another.
