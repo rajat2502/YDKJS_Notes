@@ -12,4 +12,77 @@
 
 ### Consuming Iterators
 
-- 
+- `for..of` loop:
+
+```
+// given an iterator of some data source:
+var it = /* .. */;
+
+// loop over its results one at a time
+for (let val of it) {
+  console.log(`Iterator value: ${val}`);
+}
+// Iterator value: ..
+// Iterator value: ..
+// ..
+```
+
+So, as you can notice the above code prints all the iterator values one by one.
+
+- The `...` or **spread** operator can also be used to consume the iterators. For eg:
+
+```
+// An Array spread: spread an iterator into an array, 
+// with each iterated value occupying an array element position.
+var vals = [ ...it ];
+
+// OR
+
+// A function call spread: spread an iterator into a function, 
+// call with each iterated value occupying an argument position.
+doSomethingUseful( ...it );
+```
+
+#### Iterables
+
+- The iterator-consumption protocol is technically defined for **consuming iterables**; an iterable is a value that can be iterated over.
+- ES6 defined the basic data structure/collection types in JS as iterables. This includes strings, arrays, maps, sets, and others. 
+
+```
+// an array is an iterable
+var arr = [10, 20, 30];
+for (let val of arr) {
+  console.log(`Array value: ${val}`);
+}
+// Array value: 10
+// Array value: 20
+// Array value: 30
+```
+- Since, arrays are iterables we can *`shallow-copy`* them using the `...` operator. For eg:
+
+```
+var arrCopy = [ ...arr ];
+```
+
+- We can also iterate strings as:
+
+```
+var greeting = "Hello world!";
+var chars = [...greeting];
+chars;
+// [ "H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!" ]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
