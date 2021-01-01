@@ -73,6 +73,70 @@ chars;
 // [ "H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!" ]
 ```
 
+#### Map
+
+- A Map data structure uses objects as keys, associating a value (of any type) with that object.
+
+```
+// given two DOM elements, `btn1` and `btn2`
+var buttonNames = new Map();
+buttonNames.set(btn1, "Button 1");
+buttonNames.set(btn2, "Button 2");
+
+for (let [btn, btnName] of buttonNames) {
+  btn.addEventListener("click", function onClick() {
+    console.log(`Clicked ${btnName}`);
+  });
+}
+```
+
+- In the `for..of` loop over syntax (called the default map iteration, we use the **[btn,btnName]** ("*array destructuring*") to break down each consumed tuple into the respective key/value pairs ( btn1 / "Button 1" and btn2 / "Button 2" ).
+- We can call `values()` to get a values-only iterator:
+
+```
+for (let btnName of buttonNames.values()) {
+  console.log(btnName);
+}
+// Button 1
+// Button 2
+```
+
+- Or if we want the index and value in an array iteration, we can make an entries iterator with the entries() method:
+
+```
+var arr = [10, 20, 30];
+for (let [idx, val] of arr.entries()) {
+  console.log(`[${idx}]: ${val}`);
+}
+// [0]: 10
+// [1]: 20
+// [2]: 30
+```
+
+- For the most part, All built-in iterables in JS have three iterator forms available: **keys-only** ( keys() ), **values-only** ( values() ), and **entries** ( entries() ).
+
+### Closure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
