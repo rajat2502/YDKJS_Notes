@@ -3,7 +3,7 @@
 - Programs are essentially built to process data and make decisions on that data.
 - The patterns used to step through the data have a big impact on the program’s readability.
 
-### Iteration
+## Iteration
 
 - The Iterator pattern suggests **standardized** approach to consuming data from a source one chunk at a time.
 - The iterator pattern defines a data structure called an **iterator** that has a reference to an underlying data source (like the query result rows), which exposes a method like next() . Calling next() returns the next piece of data (i.e., a “record” or “row” from a database query).
@@ -115,7 +115,61 @@ for (let [idx, val] of arr.entries()) {
 
 - For the most part, All built-in iterables in JS have three iterator forms available: **keys-only** ( keys() ), **values-only** ( values() ), and **entries** ( entries() ).
 
-### Closure
+## Closure
+
+- Closure is when a function remembers and continues to access variables from outside its scope, even when the function is executed in a different scope.
+- Closure is part of the nature of a function. Objects don’t get closures, functions do.
+- To observe a closure, you must execute a function in a different scope than where that function was originally defined.
+
+```
+function greeting(msg) {
+  return function who(name) {
+    console.log(`${msg}, ${name}!`);
+  };
+}
+
+var hello = greeting("Hello");
+var howdy = greeting("Howdy");
+
+hello("Kyle");
+// Hello, Kyle!
+hello("Sarah");
+// Hello, Sarah!
+howdy("Grant");
+// Howdy, Grant!
+```
+
+- First the `greeting(..)` outer function is executed, creating an instance of the inner function `who(..)`, that function closes over the variable `msg`. The instance of the inner function is assigned to the variables named `hello` and `howdy` respectively.
+- Since the inner function instances are still alive (assigned to hello and howdy , respectively), their closures are still preserving the `msg` variables.
+- These closures are not snapshots but actual variables. Hence, we can make changes to it using the inner function. 
+
+```
+function counter(step = 1) {
+  var count = 0;
+  return function increaseCount() {
+    count = count + step;
+    return count;
+  };
+}
+
+var incBy1 = counter(1);
+
+incBy1(); // 1
+incBy1(); // 2
+```
+
+**Note**: It’s not necessary that the outer scope be a function—it usually is, but not always—just that there be at least one variable in an outer scope accessed from an inner function:
+
+```
+for (let [idx, btn] of buttons.entries()) {
+  btn.addEventListener("click", function onClick() {
+    console.log(`Clicked on button (${idx})!`);
+  });
+}
+```
+
+## this Keyword
+
 
 
 
