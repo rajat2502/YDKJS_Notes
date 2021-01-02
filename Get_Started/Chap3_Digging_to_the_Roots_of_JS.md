@@ -5,8 +5,8 @@
 
 ## Iteration
 
-- The Iterator pattern suggests **standardized** approach to consuming data from a source one chunk at a time.
-- The iterator pattern defines a data structure called an **iterator** that has a reference to an underlying data source (like the query result rows), which exposes a method like next() . Calling next() returns the next piece of data (i.e., a “record” or “row” from a database query).
+- The Iterator pattern suggests a **standardized** approach to consuming data from a source one chunk at a time.
+- The iterator pattern defines a data structure called an **iterator** that has a reference to an underlying data source (like the query result rows), which exposes a method like next(). Calling next() returns the next piece of data (i.e., a “record” or “row” from a database query).
 - ES6 standardized a specific protocol for the iterator pattern directly in the language. The protocol defines a [**next()**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/next) method whose return is an object called an *iterator* result; the object has value and done properties, where done is a boolean that is false until the iteration over the underlying data source is complete.
 - The `next()` approach is so ES6 also included several APIs for standard consumption of the iterators.
 
@@ -140,7 +140,7 @@ howdy("Grant");
 ```
 
 - First the `greeting(..)` outer function is executed, creating an instance of the inner function `who(..)`, that function closes over the variable `msg`. The instance of the inner function is assigned to the variables named `hello` and `howdy` respectively.
-- Since the inner function instances are still alive (assigned to hello and howdy , respectively), their closures are still preserving the `msg` variables.
+- Since the inner function instances are still alive (assigned to hello and howdy, respectively), their closures are still preserving the `msg` variables.
 - These closures are not snapshots but actual variables. Hence, we can make changes to it using the inner function. 
 
 ```
@@ -263,27 +263,26 @@ The assignment to `topic` creates a property of that name directly on `otherHome
 
 ### this Revisited
 
+- The the true importance of `this` shines when considering how it powers prototype-delegated function calls:
 
+```
+var homework = {
+  study() {
+    console.log(`Please study ${this.topic}`);
+  },
+};
 
+var jsHomework = Object.create(homework);
+jsHomework.topic = "JS";
+jsHomework.study();
+// Please study JS
 
+var mathHomework = Object.create(homework);
+mathHomework.topic = "Math";
+mathHomework.study();
+// Please study Math
+```
 
+- Both the objects have different `topic` and so different results on calling the `study()` function. For a better understanding:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Screenshot from 2021-01-02 16-24-57](https://user-images.githubusercontent.com/42200276/103455900-1c574500-4d17-11eb-9c98-c15ab7adc705.png)
