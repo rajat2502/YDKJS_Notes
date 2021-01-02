@@ -170,10 +170,80 @@ for (let [idx, btn] of buttons.entries()) {
 
 ## this Keyword
 
+- **Scope** is static and contains a fixed set of variables available at the moment and location you define a function.
+- **Execution Context** is dynamic, entirely dependent on how it is called (regardless of where it is defined or even called from).
+- `this` is not a static/fixed characteristic of function, it is defined each time the function is called.
 
+```
+function classroom(teacher) {
+  return function study() {
+    console.log(`${teacher} says to study ${this.topic}`);
+  };
+}
+var assignment = classroom("Kyle");
+```
+The outer `classroom(..)` function makes no reference to a `this` keyword, so it’s just like any other function we’ve seen so far. But the inner `study()` function does reference `this` , which makes it a *this-aware* function. In other words, it’s a function that is dependent on its execution context.
 
+- Since no `topic` was defined in the `global` object, calling `assignment()` prints:
 
+```
+assignment()
+// Kyle says to study undefined
+```
 
+Now consider:
+
+```
+var homework = {
+  topic: "JS",
+  assignment: assignment,
+};
+homework.assignment();
+// Kyle says to study JS
+```
+
+Here, the this for that function call will be the `homework` object. Hence, `this.topic` resolves to "JS" in this case.
+
+**Note**: The benefit of `this-aware` functions and their *dynamic context* is the ability to more flexibly re-use a single function with data from different objects.
+
+## Prototypes
+
+- A prototype is a characteristic of an object.
+- The prototype can be thought of as a linkage between two objects and this linkage occurs when an object is created.
+- A series of objects linked together via prototypes is called the **prototype chain.**
+- The purpose of this prototype linkage (i.e., from an object B to another object A) is so that accesses against B for properties/methods that B does not have, are delegated to A to handle.
+
+```
+var homework = {
+  topic: "JS",
+};
+```
+
+- The `homework` object has only a single property, however its default prototype linkage connects to the `Object.prototype` object, which has common built-in methods on it like `toString()`, `valueOf()`, etc. For eg:
+
+```
+homework.toString();
+// [object Object]
+```
+
+### Object Linkage
+
+- To define Object prototype linkage, create the object using the `Object.create(..)`:
+
+```
+var homework = {
+  topic: "JS",
+};
+
+var otherHomework = Object.create(homework);
+otherHomework.topic;
+// "JS"
+```
+
+The figure shows how the objects are linked in a prototype chain:
+<img align="center" src="https://user-images.githubusercontent.com/42200276/103455627-abaf2900-4d14-11eb-83a2-8fce05e477b6.png" />
+
+- 
 
 
 
