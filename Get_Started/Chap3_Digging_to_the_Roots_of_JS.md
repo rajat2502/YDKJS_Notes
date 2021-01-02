@@ -240,15 +240,28 @@ otherHomework.topic;
 // "JS"
 ```
 
-The figure shows how the objects are linked in a prototype chain:
+- The figure shows how the objects are linked in a prototype chain:
 <img align="center" src="https://user-images.githubusercontent.com/42200276/103455627-abaf2900-4d14-11eb-83a2-8fce05e477b6.png" />
 
-- 
+**Tip**: `Object.create(null)` creates an object that is not prototype linked anywhere, so it’s purely just a standalone object; in some circumstances, that may be preferable.
+
+**Note**: 
+```
+homework.topic;
+// "JS"
+otherHomework.topic;
+// "JS"
+
+otherHomework.topic = "Math";
+otherHomework.topic; // "Math"
+
+homework.topic;
+// "JS" -- not "Math"
+```
+The assignment to `topic` creates a property of that name directly on `otherHomework`; there’s no effect on the `topic` property on `homework`.
 
 
-
-
-
+### this Revisited
 
 
 
