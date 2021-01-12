@@ -2,10 +2,10 @@
 
 ## Values vs. References
 
-- In [Chapter 2: Surveying JS](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-2-surveying-js-notes-h85), we discussed about the different kinds of values: `primitives` and `objects`.
+- In [Chapter 2: Surveying JS](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-2-surveying-js-notes-h85), we discussed the different kinds of values: `primitives` and `objects`.
 
 #### Reference
-References are the idea that two or more variables are pointing at the same value, such that modifying this shared value would be reflected by an access via any of those references.
+References are the idea that two or more variables are pointing at the same value, such that modifying this shared value would be reflected by access via any of those references.
 
 - In many languages, the developer can choose between assigning/passing a value as the value itself, or as a reference to the value. 
 - In JS, however, this decision is entirely determined by the kind of value.
@@ -44,7 +44,7 @@ console.log(yourAddress.street);
 // 456 TS Ave
 ```
 
-- Because the value assigned to myAddress is an object, it’s held/assigned by reference, and thus the assignment to the yourAddress variable is a copy of the reference, not the object value itself. That’s why the updated value assigned to the myAddress.street is reflected when we access yourAddress.street.
+- Because the value assigned to `myAddress` is an object, it’s held/assigned by reference, and thus the assignment to the `yourAddress` variable is a copy of the reference, not the object value itself. That’s why the updated value assigned to the `myAddress.street` is reflected when we access `yourAddress.street`.
 
 
 ## So Many Function Forms
@@ -68,11 +68,11 @@ awesomeFunction.name;
 
 - `name inference` only happens in limited cases such as when the function expression is assigned (with = ).
 - If you pass a function expression as an argument to a function call, for example, no name inference occurs; the name property will be an empty string, and the developer console will usually report **“(anonymous function)”**.
-- Even if a name is inferred, it’s still an anonymous function. because the inferred name is a metadata and can't be used to refer to that function.
+- Even if a name is inferred, it’s still an anonymous function. because the inferred name is metadata and can't be used to refer to that function.
 
 **Note:** An anonymous function doesn’t have an identifier to use to refer to itself from inside itself — for recursion, event unbinding, etc.
 
-**Tip:** It is a good practice to use `named functions` as they improves the readability of the program.
+**Tip:** It is a good practice to use `named functions` as they improve the readability of the program.
 
 - Here are some more declaration forms:
 
@@ -107,7 +107,7 @@ f = async (x) => {
 
 **Note:** Keep in mind that arrow function expressions are syntactically anonymous, meaning the syntax doesn’t provide a way to provide a direct name identifier for the function.
 
-**Tip:** Since, arrow functions are anonymous functions, they should be used for everywhere. They have a specific purpose (i.e., handling the this keyword lexically).
+**Tip:** Since, arrow functions are anonymous functions, they should be used everywhere. They have a specific purpose (i.e., handling the `this` keyword lexically).
 
 ## Coercive Conditional Comparison
 
@@ -133,11 +133,11 @@ if (Boolean(x) === true) {
 }
 ```
 
-- Since the `Boolean(..)` function always returns a value of type `boolean`, the `==` vs `===` in this snippet is irrelevant; they’ll both do the same thing. But the important part is to see that before the comparison, a coercion occurs, from whatever type x currently is, to boolean.
+- Since the `Boolean(..)` function always returns a value of type `boolean`, the `==` vs `===` in this snippet is irrelevant; they’ll both do the same thing. But the important part is to see that before the comparison, coercion occurs, from whatever type x currently is, to boolean.
 
 ## Prototypal “Classes”
 
-- In [Chapter 3: Digging to the Roots of JS](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-3-digging-to-the-roots-of-js-notes-412n), we learned how different objects are linked together using prototype chain.
+- In [Chapter 3: Digging to the Roots of JS](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-3-digging-to-the-roots-of-js-notes-412n), we learned how different objects are linked together using a prototype chain.
 - Here, we will talk about **Prototypa; Classes**:
 
 ```
