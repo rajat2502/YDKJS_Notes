@@ -9,3 +9,4 @@ These notes can also be found on my [dev.to](https://dev.to/rajat2502) account a
   - [You Don't Know JS: Get Started: Chapter 2 (Surveying JS) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-2-surveying-js-notes-h85)
   - [You Don't Know JS: Get Started: Chapter 3 (Digging to the Roots of JS) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-3-digging-to-the-roots-of-js-notes-412n)
   - [You Don't Know JS: Get Started: Chapter 4 (The Bigger Picture) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-4-the-bigger-picture-notes-139f)
+  - [You Don't Know JS: Get Started: Appendix A (Exploring Further) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-appendix-a-exploring-further-notes-2j0f)
