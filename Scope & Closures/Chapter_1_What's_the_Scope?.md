@@ -9,7 +9,7 @@
 ### Compiled vs. Interpreted
 
 - Code compilation is a set of steps that process the text of your code and turn it into a list of instructions the computer can understand. Typically, the whole source code is transformed at once, and those resulting instructions are saved as output that can later be executed.
-- In case of interpretation, the source code is transformed line by line; each line or statement is executed before immediately proceeding to processing the next line of the source code.
+- In case of interpretation, the source code is transformed line by line; each line or statement is executed before immediately proceeding to process the next line of the source code.
 - Here is an image showing the difference between the two: 
 
 ![image](https://user-images.githubusercontent.com/42200276/106129194-0ad25300-6186-11eb-9ca8-d0b7ebc32f88.png)
@@ -34,20 +34,20 @@ This program would likely be broken up into the following tokens: `var` , `a` , 
 
 #### Parsing
 
-Parsing is the process of taking a stream of tokens and turning it into a tree of nested elements, called as the **Abstract Syntax Tree** or **AST**. 
+Parsing is the process of taking a stream of tokens and turning it into a tree of nested elements, called the **Abstract Syntax Tree** or **AST**. 
 
 For example, the tree for `var a = 2;` might start with a top-level node called `VariableDeclaration` , with a child node called `Identifier` (whose value is a ), and another child called `AssignmentExpression` which itself has a child called `NumericLiteral` (whose value is 2 ).
 
 #### Code Generation
 
-Code geneation involves taking an AST and turing it into executable code. This part varies greatly depending on the language, the platform it's targeting, and other factors.
+Code generation involves taking an AST and turning it into executable code. This part varies greatly depending on the language, the platform it's targeting, and other factors.
 
-**NOTE**: The implementation details of a JS engine (utilizing system memory resources, etc.) is much deeper than we will dig here. We'll keep our focus on the observable behavior of our programs and let the JS engine manage those deeper system-level abstractions.
+**NOTE**: The implementation details of a JS engine (utilizing system memory resources, etc.) are much deeper than we will dig here. We'll keep our focus on the observable behavior of our programs and let the JS engine manage those deeper system-level abstractions.
 
 ### Required: Two Phases
 
-- The most important observation we can make about processing of JS programs is that it occurs in (at least) two phases: parsing/compilation first, then execution.
-- The separation of a parsing/compilation phase from the subsequent execution phase is observable fact, There are three program characteristics you can observe to prove this to yourself: syntax errors, early errors, and hoisting.
+- The most important observation we can make about the processing of JS programs is that it occurs in (at least) two phases: parsing/compilation first, then execution.
+- The separation of a parsing/compilation phase from the subsequent execution phase is an observable fact, There are three program characteristics you can observe to prove this to yourself: syntax errors, early errors, and hoisting.
 
 ### Syntax Errors from the Start
 
@@ -60,7 +60,7 @@ greeting = ."Hi";
 // SyntaxError: unexpected token .
 ```
 
-- When we try to execute this program it shows no output, but instead throws a `SyntaxError` about the unexpected . token right before the `"Hi"` string.
+- When we try to execute this program it shows no output, but instead throws a `SyntaxError` about the unexpected `.` token right before the `"Hi"` string.
 - Since, JS is a compiled language and not interpreted (line by line), the string was not printed, and the program was executed as a whole.
 
 ### Early Errors
@@ -149,7 +149,7 @@ Another target reference:
 getStudentName(73);
 ```
 
-Here, the arguement `73` is assigned to the parameter `studentID`.
+Here, the argument `73` is assigned to the parameter `studentID`.
 
 The last target reference in the program is:
 
@@ -175,7 +175,7 @@ Here the `student` is a target but the array `students` is a source reference.
 if (student.id == studentID)
 ```
 
-In thi statement, both the `student` and `studentID` are source reference.
+In this statement, both the `student` and `studentID` are source references.
 
 ```
 return student.name;
@@ -213,16 +213,16 @@ with (badIdea) {
 }
 ```
 
-- The global scope was not modified here, but badIdea was turned into a scope at runtime rather than compile time, and its property oops becomes a variable in that scope.
+- The global scope was not modified here, but badIdea was turned into scope at runtime rather than compile-time, and its property oops becomes a variable in that scope.
 
 **NOTE:** At all costs, avoid `eval(..)` (at least, `eval(..)` creating declarations) and `with`. Again, neither of these cheats is available in strict-mode, so if you just use strict-mode (you should!) then the temptation goes away!
 
 ### Lexical Scope
 
-- JS's scope is determined at compile time, the term for this kind of scope is **lexical scope**.
+- JS's scope is determined at compile-time, the term for this kind of scope is **lexical scope**.
 - "Lexical" is associated with the "lexing" stage of compilation, as discussed earlier in this chapter.
 
-**NOTE:** It's important to note that compilation doesn't actually do anything in terms of reserving memory for scopes and variables.
+**NOTE:** It's important to note that compilation doesn't do anything in terms of reserving memory for scopes and variables.
 
 That's it for this chapter. I will be back with the notes of the next chapter. 
 
