@@ -98,33 +98,137 @@ saySomething();
 // ReferenceError: Cannot access 'greeting' before initialization
 ```
 
-- 
+- The noted ReferenceError occurs from the line with the statement `greeting = "Howdy"`. 
+- What's happening is that the greeting variable for that statement belongs to the declaration on the next line, `let greeting = "Hi"`, rather than to the previous var greeting = "Hello" statement.
+- Here also, we can notice that the JS engine could only know, at the line that error is thrown, that the next statement would declare a block-scoped variable of the same name ( greeting ) is if the JS engine had already processed this code in an earlier pass, and already set up all the scopes and their variable associations.
 
+### Compiler Speak
 
+- Let's now learn how the JS engine identifies the variables and determines their scopes as the program is compiled.
+- Let's first see an example:
 
+```
+var students = [
+  { id: 14, name: "Kyle" },
+  { id: 73, name: "Suzy" },
+  { id: 112, name: "Frank" },
+  { id: 6, name: "Sarah" },
+];
 
+function getStudentName(studentID) {
+  for (let student of students) {
+    if (student.id == studentID) {
+      return student.name;
+    }
+  }
+}
 
+var nextStudent = getStudentName(73);
 
+console.log(nextStudent);
+// Suzy
+```
 
+- All occurrences of variables/identifiers in a program serve in one of two "roles": either they're the target of an assignment or they're the source of a value.
+- If a variable is being assigned a value, then it is a **target** otherwise a **source** of value.
 
+### Targets
 
+- In the above code, since the `students` and `nextStudent` variables are assigned a value so they are both targets.
+- There are three other target assignment operations in the code that are perhaps less obvious. One of them:
 
+```
+for (let student of students) {
+```
 
+This statement assigns a value to `student` for each element of the array `students`.
 
+Another target reference:
 
+```
+getStudentName(73);
+```
 
+Here, the arguement `73` is assigned to the parameter `studentID`.
 
+The last target reference in the program is:
 
+```
+function getStudentName(studentID) {
+```
 
+A `function` declaration is a special case of a target reference. Here the identifier `getStudentName` is assigned a function as a value.
 
+So, we have identified all the targets in the program, let's now identify the sources!
 
+### Sources
 
+- The sources are as follows:
 
+```
+for (let student of students)
+```
 
+Here the `student` is a target but the array `students` is a source reference.
 
+```
+if (student.id == studentID)
+```
 
+In thi statement, both the `student` and `studentID` are source reference.
 
+```
+return student.name;
+```
 
+`student` is also a source reference in the `return` statement.
 
+In `getStudentName(73)`, `getStudentName` is a source reference (which we hope resolves to a function reference value). In `console.log(nextStudent)`, `console` is a source reference, as is `nextStudent`.
 
+**NOTE:** In case you were wondering, `id`, `name`, and `log` are all properties, not variable references.
 
+### Cheating: Runtime Scope Modifications
+
+- Scope is determined as the program is compiled, and should not generally be affected by runtime conditions.
+- However, in non-strict-mode, there are technically still two ways to cheat this rule, modifying a program's scopes during runtime.
+- The first way is to use the `eval(..)` function that receives a string of code to compile and execute on the fly during the program runtime. If that string of code has a `var` or `function` declaration in it, those declarations will modify the current scope that the `eval(..)` is currently executing in:
+
+```
+function badIdea() {
+eval("var oops = 'Ugh!';");
+console.log(oops);
+}
+
+badIdea(); // Ugh!
+```
+
+- If the `eval(..)` function was not present, the program would throw an error that the variable `oops` was not defined. But eval(..) modifies the scope of the `badIdea()` function at runtime.
+- The second way to cheat is the `with` keyword, which essentially dynamically turns an object into a local scope — its properties are treated as identifiers in that new scope's block:
+
+```
+var badIdea = { oops: "Ugh!" };
+
+with (badIdea) {
+  console.log(oops); // Ugh!
+}
+```
+
+- The global scope was not modified here, but badIdea was turned into a scope at runtime rather than compile time, and its property oops becomes a variable in that scope.
+
+**NOTE:** At all costs, avoid `eval(..)` (at least, `eval(..)` creating declarations) and `with`. Again, neither of these cheats is available in strict-mode, so if you just use strict-mode (you should!) then the temptation goes away!
+
+### Lexical Scope
+
+- JS's scope is determined at compile time, the term for this kind of scope is **lexical scope**.
+- "Lexical" is associated with the "lexing" stage of compilation, as discussed earlier in this chapter.
+
+**NOTE:** It's important to note that compilation doesn't actually do anything in terms of reserving memory for scopes and variables.
+
+That's it for this chapter. I will be back with the notes of the next chapter. 
+
+Till then, **Happy Coding!**
+
+If you enjoyed reading these notes or have any suggestions or doubts, then do let me know your views in the comments. 
+In case you want to connect with me, follow the links below:
+
+[LinkedIn](https://www.linkedin.com/in/rajat2502) | [GitHub](https://github.com/rajat2502) | [Twitter](https://twitter.com/rajatverma2502)
