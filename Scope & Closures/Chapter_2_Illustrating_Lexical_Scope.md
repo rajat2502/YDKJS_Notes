@@ -4,9 +4,9 @@
 
 ### Marbles, and Buckets, and Bubbles... Oh My!
 
-- Let's say we have marbles of three different colors Red, Blue, and Green. To sort all the marbles we will drop the red marbles into the red bucket, blue into a blue bucket, and green into a green bucket.
+- Let's say we have marbles of three different colors Red, Blue, and Green. To sort all the marbles we will drop the red marbles into a red bucket, blue into a blue bucket, and green into a green bucket.
 - Now if we need a red marble we know the red bucket is where to get it from.
-- Now apply this analogy to scope and variables, the marbles are the variables and the bucket are the scopes.
+- Now apply this analogy to scope and variables, the marbles are the variables and the buckets are the scopes.
 - Let's understand this with the help of an example:
 
 ```
@@ -43,7 +43,7 @@ console.log(nextStudent); // Suzy
 - Bubble 2 (BLUE): surround scope of function `getStudentName(..)`, holds one identifier: `studentID`.
 - Bubble 3 (GREEN): surround the scope of the for-loop, holds one identifier: `student`.
 
-**NOTE**: Scope bubbles are determined using compilation. Each marble is colored based on which bucket it's declared in, not the color of the scope it may be accessed from.
+**NOTE**: Scope bubbles are determined during compilation. Each marble is colored based on which bucket it's declared in, not the color of the scope it may be accessed from.
 
 - Scopes can nest inside each other, to any depth of nesting as your program needs.
 - References (non-declarations) to variables/identifiers are allowed if there's a matching declaration either in the current scope, or any scope above/outside the current scope, but not with declarations from lower/nested scopes.
@@ -62,7 +62,7 @@ console.log(nextStudent); // Suzy
 - The error message for an undeclared variable condition, in most JS environments, will look like, "Reference Error: XYZ is not defined."
 - "Not defined" means "not declared" or "undeclared".
 - "Undefined" means that the variable was found, but it has no other value at the moment. So it defaults to the `undefined` value.
-- To perpetuate the confusion even further, JS's typeof operator returns the string "undefined" for variable references in either state:
+- To perpetuate the confusion even further, JS's `typeof` operator returns the string "undefined" for variable references in either state:
 
 ```
 var studentName;
