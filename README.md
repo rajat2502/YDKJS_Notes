@@ -10,3 +10,7 @@ These notes can also be found on my [dev.to](https://dev.to/rajat2502) account a
   - [You Don't Know JS: Get Started: Chapter 3 (Digging to the Roots of JS) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-3-digging-to-the-roots-of-js-notes-412n)
   - [You Don't Know JS: Get Started: Chapter 4 (The Bigger Picture) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-chapter-4-the-bigger-picture-notes-139f)
   - [You Don't Know JS: Get Started: Appendix A (Exploring Further) Notes](https://dev.to/rajat2502/you-don-t-know-js-get-started-appendix-a-exploring-further-notes-2j0f)
+
+- **Book 2: Scope & Closures:**
+  - [You Don't Know JS: Scope & Closures: Chapter 1 (What's the Scope?) Notes](https://dev.to/rajat2502/you-don-t-know-js-scope-closures-what-s-the-scope-g12)
+  - [Illustrating Lexical Scope in JavaScript](https://dev.to/rajat2502/illustrating-lexical-scope-in-javascript-2h0f)
