@@ -1,7 +1,6 @@
 # Chapter 2: Illustrating Lexical Scope
 
 - In this chapter we will discuss about how our program is handled by the JS Engine and how the JS Engine actually works.
-- We will see different metaphors to illustrate scope.
 
 ### Marbles, and Buckets, and Bubbles... Oh My!
 
@@ -50,12 +49,47 @@ console.log(nextStudent); // Suzy
 - References (non-declarations) to variables/identifiers are allowed if here's a matching declaration either in the current scope, or any scope above/outside the current scope, but not with declarations from lower/nested scopes.
 - An expression in the RED(1) bucket only has access to RED(1) marbles, not BLUE(2) or GREEN(3). An expression in the BLUE(2) bucket can reference either BLUE(2) or RED(1) marbles, not GREEN(3). And an expression in the GREEN(3) bucket has access to RED(1), BLUE(2), and GREEN(3) marbles.
 
+### Nested Scope
+
+- Scopes are lexically nested to any arbitary depth as the program defines.
+- In the above example, the function scope for `getStudentName(..)` is nested inside the global scope. The block scope of the `for` loop is similarly nested inside that function scope.
+- Any time an identifier reference cannot be found in the current scope, the next outer scope in the nesting is consulted; that process is repeated until an answer is found or there are no more scopes to consult.
+
+### Undefined Mess
+
+- If the variable is a source, an unresolved identifier lookup is considered an undeclared (unknown, missing) variable, which always results in a `ReferenceError` being thrown. 
+- If the variable is a target, and the code at that moment is running in strict-mode, the variable is considered undeclared and similarly throws a `ReferenceError`.
+- The error message for an undeclared variable condition, in most JS environments, will look like, "Reference Error: XYZ is not defined."
+- "Not defined" means "not declared" or "undeclared".
+- "Undefined" means that the variable was found, but it has no other value at the moment. So it defaults to the `undefined` value.
+- To perpetuate the confusion even further, JS's typeof operator returns the string "undefined" for variable references in either state:
+
+```
+var studentName;
+
+typeof studentName; // "undefined"
+typeof doesntExist; // "undefined"
+```
+
+- So, we as developers have to pay close attention to not mix up which kind of "undefined" we're dealing with.
+
+### Global... What!?
+
+- If the varibale is a target and the program is not in strict-mode, the engine creates and accidental global variable to fulfill that target assignment. For Example:
+
+```
+function getStudentName() {
+  // assignment to an undeclared variable :(
+  nextStudent = "Suzy";
+}
+
+getStudentName();
+console.log(nextStudent);
+// "Suzy" -- oops, an accidental-global variable!
+```
 
 
-
-
-
-
+- This is another reason why we should use strict-mode. It prevents us from such incidents by throwing a `ReferenceError`.
 
 
 
