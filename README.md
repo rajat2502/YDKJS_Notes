@@ -14,3 +14,4 @@ These notes can also be found on my [dev.to](https://dev.to/rajat2502) account a
 - **Book 2: Scope & Closures:**
   - [You Don't Know JS: Scope & Closures: Chapter 1 (What's the Scope?) Notes](https://dev.to/rajat2502/you-don-t-know-js-scope-closures-what-s-the-scope-g12)
   - [Illustrating Lexical Scope in JavaScript](https://dev.to/rajat2502/illustrating-lexical-scope-in-javascript-2h0f)
+  - [The Scope Chain in JavaScript](https://dev.to/rajat2502/the-scope-chain-in-javascript-596o)
